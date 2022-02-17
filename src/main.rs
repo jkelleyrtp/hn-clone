@@ -24,8 +24,7 @@ fn app(cx: Scope) -> Element {
                         Link { to: "https://dioxuslabs.com", class: "font-light text-white", "Built with Dioxus" }
                     }
                 }
-                div {
-                    class: "container mx-auto",
+                div { class: "container mx-auto",
                     Route { to: "/", Stories { sort: StorySorting::Top } }
                     Route { to: "/new", Stories { sort: StorySorting::New } }
                     Route { to: "/best", Stories { sort: StorySorting::Best } }
@@ -58,13 +57,11 @@ fn StoryListing<'a>(cx: Scope<'a>, story: &'a StoryItem) -> Element {
         id,
         title,
         url,
-        text: _,
         by,
         score,
-        descendants: _,
         time,
         kids,
-        r#type: _,
+        ..
     } = story;
 
     let url = url.as_deref().unwrap_or_default();
@@ -118,13 +115,11 @@ fn StorySubmission(cx: Scope) -> Element {
         id,
         title,
         url,
-        text: _,
         by,
         score,
-        descendants: _,
         time,
         kids,
-        r#type: _,
+        ..
     } = &story.item;
 
     let hostname = web_sys::Url::new(url.as_deref().unwrap_or_default())
